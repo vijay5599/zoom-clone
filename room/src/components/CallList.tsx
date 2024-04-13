@@ -83,13 +83,13 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
             buttonText={type === "recordings" ? "Play" : "Start"}
             handleClick={
               type === "recordings"
-                ? () => navigate(`${(meeting as CallRecording).url}`)
+                ? () => window.open(`${(meeting as CallRecording).url}`, "_blank")
                 : () => navigate(`/meeting/${(meeting as Call).id}`)
             }
             link={
               type === "recordings"
                 ? (meeting as CallRecording).url
-                : `localhost:5173/meeting/${(meeting as Call).id}`
+                : `/meeting/${(meeting as Call).id}`
             }
           />
         ))

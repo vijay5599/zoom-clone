@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   DeviceSettings,
   VideoPreview,
   useCall,
   useCallStateHooks,
   useCalls,
-} from '@stream-io/video-react-sdk';
+} from "@stream-io/video-react-sdk";
 
-import Alert from './Alert';
-import { Button } from './ui/button';
+import Alert from "./Alert";
+import { Button } from "./ui/button";
 
-const MeetingSetup = ({ setIsSetupComplete } : any) => {
+const MeetingSetup = ({ setIsSetupComplete }: any) => {
   const { useCallEndedAt, useCallStartsAt } = useCallStateHooks();
   const callStartsAt = useCallStartsAt();
   const callEndedAt = useCallEndedAt();
@@ -19,35 +19,34 @@ const MeetingSetup = ({ setIsSetupComplete } : any) => {
   const callHasEnded = !!callEndedAt;
 
   const call = useCall();
-    console.log(call, "ssss");
-    
+  console.log(call, "ssss");
 
   if (!call) {
     throw new Error(
-      'useStreamCall must be used within a StreamCall component.',
+      "useStreamCall must be used within a StreamCall component."
     );
   }
 
   const [isMicCamToggled, setIsMicCamToggled] = useState(false);
   useEffect(() => {
     if (isMicCamToggled && call) {
-        call.camera.disable()
-        call?.microphone?.disable();
+      call.camera.disable();
+      call?.microphone?.disable();
     } else if (call) {
-        call.camera.enable();
-        call?.microphone?.enable();
+      call.camera.enable();
+      call?.microphone?.enable();
     }
-}, [isMicCamToggled, call]);
+  }, [isMicCamToggled, call]);
 
-//   useEffect(() => {
-//     if (isMicCamToggled) {
-//       call?.camera.disable();
-//       call?.microphone.disable();
-//     } else {
-//       call?.camera.enable();
-//       call?.microphone.enable();
-//     }
-//   }, [isMicCamToggled, call?.camera, call?.microphone]);
+  //   useEffect(() => {
+  //     if (isMicCamToggled) {
+  //       call?.camera.disable();
+  //       call?.microphone.disable();
+  //     } else {
+  //       call?.camera.enable();
+  //       call?.microphone.enable();
+  //     }
+  //   }, [isMicCamToggled, call?.camera, call?.microphone]);
 
   if (callTimeNotArrived) {
     return (
@@ -67,7 +66,7 @@ const MeetingSetup = ({ setIsSetupComplete } : any) => {
   }
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-3 text-white">
+    <div className="flex ml-28 overflow-hidden h-[30%] w-full flex-col items-center justify-center gap-3 text-white">
       <h1 className="text-center text-2xl font-bold">Setup</h1>
       <VideoPreview />
       <div className="flex h-16 items-center justify-center gap-3">

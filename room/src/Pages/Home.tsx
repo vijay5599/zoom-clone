@@ -3,11 +3,16 @@ import MeetingTypeList from "@/components/MeetingTypeList";
 const Home = () => {
   const now = new Date();
 
-  const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-  const date = (new Intl.DateTimeFormat('en-US', { dateStyle: 'full' })).format(now);
+  const time = now.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(
+    now
+  );
 
   return (
-    <div className="flex w-[60%] h-auto flex-col gap-5 text-white">
+    <div className="flex w-full h-auto overdlow-hidden flex-col gap-5 text-white">
       <div className="h-[303px] w-full rounded-[20px] bg-hero bg-cover">
         <div className="flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11">
           <h2 className="glassmorphism max-w-[273px] rounded py-2 text-center text-base font-normal">
@@ -19,7 +24,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    <MeetingTypeList/>
+      <MeetingTypeList />
     </div>
   );
 };
