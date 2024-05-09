@@ -1,6 +1,7 @@
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
-- Next.js
+- React.js
+- Nodejs and expressjs
 - TypeScript
 - Clerk
 - getstream
